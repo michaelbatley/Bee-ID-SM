@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+<head lang="en">
+<title>Sydney megachilid bees</title>
+<!--[if IE]><link rel="shortcut icon" href="shortcut.ico"><![endif]-->
+<link rel="icon" href="myst.png">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline'">
+ 
+     
+<meta name="viewport" content="user-scalable=yes, initial-scale=0.5, maximum-scale=4, minimum-scale=0.25, width=device-width">
+        
+  
+<style>
+
+.checkbox {
+	display: inline-block;
+	cursor: pointer;
+	width: 360px;
+	bottom: 0px;
+	font-size: 24px; margin-right:10px; line-height:30px;
+}
+
+input[type=checkbox] {
+ display:none;	
+}
+
+.checkbox::after {
+	content: "";
+	display: inline-block;
+	float: right;
+	width: 28px;
+	height: 28px;
+	background-color: #6AAFFD;
+	color: #ffffff;
+	text-align: center;
+	border-radius: 5px;
+}
+
+input[type=checkbox]:checked + .checkbox::after {
+	content: "\2713";
+	float: right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:thicker;
+	font-size: 28px;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 700px; 
+    height: 1100px;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0); 
+}
+
+.modal-content {
+    background-color: #000000;
+    font-size: 150%;
+    font-family: Arial;
+    color: #FFFFFF;
+    margin:left;
+    padding: 20px 0 20px 0;
+    border: none;
+    width: 400px;
+    height: 1050px
+}
+
+.button {
+    position: relative;
+    margin-left: 120px;
+    background-color: #202020;
+    width: 130px;
+    font-size: 100%;
+    padding:5px 0px 5px 0px;
+    border: none;
+}
+
+.button:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actionbar {
+	position: relative;
+	margin: auto;
+	width: 1300px;
+}
+
+.icon {
+	position: absolute;
+	width: 64px;
+	top: 7px;
+	margin-left: 70px;
+}
+
+.maintitle {
+	position: absolute;
+	top: 15px;
+	font-family: Arial;
+	font-size: 250%;
+	margin-left: 15%;
+	background-color:#6AAFFD;
+}
+
+.sex  {
+	position: absolute;
+	top: 15px;
+	margin-left: 65%;
+}
+
+.help {
+	position: absolute;
+	top: 15px;
+	margin-left: 90%;
+}
+
+.drawer {
+	position: absolute;
+	top: 25px;
+	margin-left: 2%;
+}
+
+.container {
+	width: 1300px;
+	display:block;
+	background-color: black;
+}
+
+.images {
+	display:block;
+	position: relative;
+	width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0;
+}
+
+.caption {
+	display: block;
+	position: absolute;
+	top: 430px;
+	width: 320px;
+	font-style: italic;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+
+function jumpto(x) {
+	document.location.assign(sp[x]+".htm");
+}
+
+function openhelp() {
+	document.location.assign("help.htm");
+}
+
+
+function draw(sm,sx) {
+	var count=0;
+	var ok=true;
+	var chosen=new Array()
+	var subscript="";
+	if (sx=="m") {subscript = "m";
+		     	document.getElementById("sexicon").src="female.png"; }
+	else 	     {subscript = ""
+			document.getElementById("sexicon").src="male.png";};
+	document.write ("<div class='images'>");
+	var m1=sm & 15;
+	var m2=sm & 496;
+	var m3=sm & 1536;
+	var m4=sm & 2048;
+	var m5=sm & 28672;
+	document.write("<div class='images'>");
+	for (var i=1;i<28;i++){
+		ok=true;
+		if ((m1!=0)&&((m1&mask[i])==0)) {ok=false};
+		if (ok&&(m2!=0)&&((m2&mask[i])==0)) {ok=false};
+		if (ok&&(m3!=0)&&((m3&mask[i])==0)) {ok=false};
+		if (ok&&(m4!=0)&&((m4&mask[i])==0)) {ok=false};
+		if (ok&&(m5!=0)&&((m5&mask[i])==0)) {ok=false};
+		if (ok) {filename[i] = ""+sp[i]+ subscript +".jpg";
+			document.write ("<img src='"+filename[i]+"' onclick='jumpto("+ i +")'> &nbsp;");
+			count = count + 1;
+			chosen[count]=i;
+			} 
+			if (count==4||i==27) {
+						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='left:"+(j-1)*322+"px;'>"+n[chosen[j]]+"</span>");}
+						count = 0;
+						document.write("</div><BR><BR>");
+						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images'>")};
+						}
+	}
+	document.write ("</div>");
+}
+
+</script>
+<script type="text/javascript" src="listen.js"></script>
+</HEAD>
+<body style="background-color:#000000; color:#FFFFFF; margin: auto;">
+<script type="text/javascript">
+var n =new Array()
+var filename = new Array()
+var sp = new Array()
+var mask = new Array()
+var sex = new String
+</script>
+<script type="text/javascript"  SRC="names.js"></script>
+<script type="text/javascript"  SRC="species.js"></script>
+<script type="text/javascript"  SRC="masks.js"></script>
+<script type="text/javascript">
+!localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
+
+if(typeof(Storage) !== "undefined") {
+	var searchmask = localStorage.getItem("storedmask");
+	if (localStorage.getItem("storedsex") == null) {localStorage.setItem("storedsex","f")};
+	sex = localStorage.getItem("storedsex");
+} else {
+    alert("Sorry, your browser does not support data storage");
+};
+</script>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+	<button id="clear" class="button" style="color:#6AAFFD;"><b>clear all</b></button>
+	<div style="background-color: #202020; padding-left:20px;">
+	<p><input type="checkbox" id="par1">
+	<label for="par1" class="checkbox">abdomen mostly orange</label></p>
+	<p><input type="checkbox" id="par2">
+	<label for="par2" class="checkbox">end of abdomen orange</label></p>
+	<p><input type="checkbox" id="par3" style="float:right;">
+	<label for="par3" class="checkbox">end of abdomen white</label></p>
+	<p><input type="checkbox" id="par4" style="float:right;">
+	<label for="par4" class="checkbox">end of abdomen black</label></p>
+	</div><div style="background-color: #000000; padding-left:20px">
+	<p><input type="checkbox" id="par5" style="float:right;">
+	<label for="par5" class="checkbox">5 white tergal bands</label></p>
+	<p><input type="checkbox" id="par6" style="float:right;">
+	<label for="par6" class="checkbox">4 white tergal bands</label></p>
+	<p><input type="checkbox" id="par7" style="float:right;">
+	<label for="par7" class="checkbox">3 white tergal bands</label></p>
+	<p><input type="checkbox" id="par8" style="float:right;">
+	<label for="par8" class="checkbox">2 white tergal bands</label></p>
+	<p><input type="checkbox" id="par9" style="float:right;">
+	<label for="par9" class="checkbox">lateral tergal hair only</label></p>
+	</div><div style="background-color: #202020; padding-left:20px">
+	<p><input type="checkbox" id="par10" style="float:right;">
+	<label for="par10" class="checkbox">facial hair white</label></p>
+	<p><input type="checkbox" id="par11" style="float:right;">
+	<label for="par11" class="checkbox">facial hair orange</label></p>
+	</div><div style="background-color: #000000; padding-left:20px">
+	<p><input type="checkbox" id="par12" style="float:right;">
+	<label for="par12" class="checkbox">clypeus with projection(s)</label></p>
+	</div><div style="background-color: #202020; padding-left:20px">
+	<p><input type="checkbox" id="par13" style="float:right;">
+	<label for="par13" class="checkbox">length <10 mm </label></p>
+	<p><input type="checkbox" id="par14" style="float:right;">
+	<label for="par14" class="checkbox">length 10-12 mm</label></p>
+	<p><input type="checkbox" id="par15" style="float:right;">
+	<label for="par15" class="checkbox">length > 12 mm</label></p></div>
+	<button id="apply" class="button" style="color:#FFFFFF;"><b>apply</b></button>
+  </div>
+</div>
+<!--
+<script type="text/javascript">
+var modal = document.getElementById('myModal');
+var submit = document.getElementsByClassName("button")[1];
+var clear = document.getElementsByClassName("button")[0];
+
+function openFunc() {
+	var mask = localStorage.getItem("storedmask");
+	modal.style.display = "block";
+	for (i=0; i<15; i++) {
+		if ((mask & Math.pow(2,i))>0) {document.getElementById("par"+(i+1)).checked=true;}
+	}
+}
+
+submit.onclick = function() {closeFunc()};
+clear.onclick = function() {clearFunc()};
+
+function closeFunc() {
+	var thismask = 0;
+	for (i=0; i<15; i++) {
+	if (document.getElementById("par"+(i+1)).checked) {
+	thismask = thismask + Math.pow(2,i)
+	}
+   }
+	localStorage.setItem("storedmask", thismask);
+	modal.style.display = "none";
+	document.location.reload(true);
+}
+
+function clearFunc() {
+	for (i=0; i<15; i++) {
+		document.getElementById("par"+(i+1)).checked = false;
+		localStorage.setItem("storedmask", 0);
+	}
+}
+
+</script>
+-->
+<p>
+<div class="actionbar"><img src= "actionbar.png">
+<div class="drawer"><img id="drawer" src="ic_drawer.png" ></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="male.png"></div><div class="help"><img id="help" src="ic_action_help.png"></div></div>
+<script type="text/javascript">
+draw(searchmask,sex);
+</script>
+</BODY>
+</HTML>
