@@ -1,0 +1,219 @@
+<!DOCTYPE html><html><head>
+<TITLE>Sydney megachilid bees</TITLE>
+<style>
+.actionbar {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1300px;
+}
+
+.icon {
+	position: absolute;
+	top: 7px;
+	margin-left: 5%;
+}
+
+.previous {
+	position: absolute;
+	top: 15px;
+	margin-left: 1%;
+}
+
+.maintitle {
+	position: absolute;
+	top: 15px;
+	margin-left: 15%;
+	font-family: Arial;
+	font-size: 250%;
+	background-color:#6AAFFD;
+}
+
+.container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1300px;
+	height: 452px;
+	overflow: scroll;
+}
+
+.scrollItem {
+	position: absolute;
+	left: 0;
+	top: 0px;
+	width: 4615px;
+	padding-top: 2px;
+	border: 4px solid gray;
+}
+
+.paragraph {
+	width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Helvetica;
+	font-size: 180%;
+	font-weight: normal;
+}
+
+.buttons {
+	position: relative;
+	width: 800px;
+	height: 30px;
+	margin: auto;
+	font-family: Helvetica;
+	font-size:120%;
+}
+
+.details {
+	position: absolute;
+	margin-left: 0;
+	text-align: center;
+	background-color:#6AAFFD;
+	border: 2px solid white;
+	width: 300px;
+	padding: 2px;
+}
+
+.distrib {
+	position: absolute;
+	text-align: center;
+	margin-left: 490px;
+	background-color:#000000;
+	width: 300px;
+	border: 2px solid white;
+	padding: 2px;
+}
+td	{
+	text-align:left;
+	padding-left: 10px;
+}
+
+.integument {
+    display: none;
+    position: fixed;
+    z-index: 2; 
+    padding: 0px 10px 10px 10px; 
+    left: 30%;
+    top: 0px;
+    width: 744px; 
+    height: 1030px;
+    font-size: 150%;
+    font-family: Arial;
+    color: #000000;
+    background-color: #FFFFFF; 
+}
+
+</style>
+<script>
+function switchpage() {
+	document.location.assign("hackerimap.htm")
+}
+function home() {
+	document.location.assign("main.htm")
+}
+</script>
+
+</HEAD>
+<body text="#FFFFFF" link="#409000" bgcolor="#00000">
+
+<P>
+<div class="actionbar"><img src = "actionbar.png">
+<div class="previous"><img src="ic_action_previous_item.png" onclick="home()"></div><div class="icon"><img src="myst.png"></div><div class="maintitle">resin bee</div></div>
+<p><div class="buttons"><span class="details">DETAILS</span><span class="distrib" onclick="switchpage()">DISTRIBUTION</span>
+</div></p>
+<script>
+var n =new Array()
+var filename = new Array()
+var sp = new Array()
+
+</script>
+
+<script>
+	document.write("<div class='container'><div class='scrollItem'>")
+	for (var i=1;i<10;i++){
+		filename[i] = "hackeri" + i + ".jpg"
+		document.write ("<img src="+filename[i]+" hspace='2'>")
+	}
+	document.write("</div></div>")
+
+	function showI () {
+		document.getElementById("integmnt").style.display="block";
+		}
+	function showT () {
+		document.getElementById("tom").style.display="block";
+		}
+
+	function closeFunc(n) {
+		if (n==1) {int.style.display="none";}
+		if (n==2) {tomen.style.display="none";}
+	}
+
+</script>
+	<div id="integmnt" class="integument">
+	<p><img src="integument.jpg"</p>
+	<p>Integument is the chitinous material of the outer skeleton. The apparent colour of the bee may be due to the colour of the integument or the colour of any tomentum (hair) that covers the surface.</p>
+	</div>
+	<div id="tom" class="integument">
+	<p><img src="tomentum.jpg"</p>
+	<p>A defining characteristic of <i>M. hackeri</i> and <i>M. apicata</i> is the tomentum in the grooves of T3 and T4. Tomentum is a felt-like covering of short, highly-branched hairs pressed close to the surface. The terms T1, T2 ... refer to the segments of the top half of the metasoma, numbered from front to back.</p>
+	</div>
+
+	<div class="paragraph">
+	<p style = "color:yellow; font-size:150%; font-style:italic; font-weight:bold;">Megachile hackeri</p>
+	<p style="font-size:120%;">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+	<span style="font-weight:bold; ">Size</span>
+	<BR>female 8 mm; male 7 mm
+	<p><span style="font-weight:bold;">Identifying Characteristics</span>
+	<BR>Small species, most like M. apicata from which it can be distinguished by the mandibles - the shape in the case of females and the colour (black) in the case of males. The colour of the <span style="color:#6AAFFD;" onclick="showI()"> integument</span> at the end of the abdomen varies from black to dull red-brown.</p>
+	<p><span style="font-weight:bold;">Distinctive Features</span>
+	<BR>The grooves at the bases of the second and third metasomal segments carry white <span style="color:#6AAFFD;" onclick="showT()">tomentum</span>.</p>
+	<p><span style="font-weight:bold;">Flower Visiting Records</span>
+	<p><table border="0" style="width:100%;font-style:italic;" ><tr><td>Baeckea brevifolia</td><td>Boronia microphylla</td><td>Daviesia ulicifolia</td></tr>
+						<tr><td>Hibbertia scandens</td><td>Jacksonia scoparia</td><td>Kunzea ambigua</td></tr>
+						<tr><td>Leptospermum sp.</td><td>Leucopogon sp.</td><td>Pultenaea tuberculata</td></tr>
+						<tr><td>Stylidium sp.</td></tr></table></p>
+	<p><span style="font-weight:bold;">Taxonomy</span>
+	<table border="1" style="width:100%;">
+	  <tr>
+	    <td style="width:200px">Phylum:</td>
+	    <td style="width:1100px">Arthropoda</td>
+	  </tr>
+	  <tr>
+	    <td>Class:</td>
+	    <td>Insecta</td>
+	  </tr>
+	  <tr>
+	    <td>Order:</td>
+	    <td>Hymenoptera</td>
+	  </tr>
+	  <tr>
+	    <td>Family:</td>
+	    <td>Megachilidae</td>
+	  </tr>
+	  <tr>
+	    <td>Genus:</td>
+	    <td><span style="font-style:italic;">Megachile</span></td>
+	  </tr>
+	  <tr>
+	    <td>Subgenus:</td>
+	    <td><span style="font-style:italic;"></span></td>
+	  </tr>
+	  <tr>
+	    <td>Species:</td>
+	    <td><span style="font-style:italic;">hackeri</span></td>
+	  </tr>
+	</table>
+</p></div>
+<script>
+
+var int = document.getElementById('integmnt');
+var tomen = document.getElementById('tom');
+
+
+
+int.onclick = function() {closeFunc(1)};
+tomen.onclick = function() {closeFunc(2)};
+
+</script>
+</BODY></HTML>
