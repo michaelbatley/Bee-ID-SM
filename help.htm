@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Sydney megachilid bees</title>
+<style>
+
+.previous {
+	position: absolute;
+	top: 15px;
+	margin-left: 1%;
+}
+
+.modal {
+    display: none;
+    position: relative;
+    z-index: 1; 
+    padding-top: 120px; 
+    margin: auto;
+    top: 0;
+    width: 1300px; 
+    height: 3000px;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0); 
+}
+
+.modal-content {
+    background-color: #000000;
+    font-size: 150%;
+    font-family: Arial;
+    color: #FFFFFF;
+    margin:left;
+    padding: 20px 0 20px 0;
+    border: none;
+    width: 400px;
+    height: 910px
+}
+
+.close {
+    position: relative;
+    float: right;
+    background-color: #E0E0E0;
+    width: 280px;
+    color: #FF0000;
+    font-size: 100%;
+    border:30px solid black;
+    padding:5px;
+}
+
+.close:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actionbar {
+	position: relative;
+	margin: auto;
+	width: 1300px;
+}
+
+.icon {
+	position: absolute;
+	width: 64px;
+	top: 7px;
+	margin-left: 70px;
+}
+
+.maintitle {
+	position: absolute;
+	top: 15px;
+	font-family: Arial;
+	font-size: 250%;
+	margin-left: 15%;
+	background-color:#6AAFFD;
+}
+
+.header {
+	position:relative;
+	margin: auto;
+	font-size: 400%;
+	width: 38%;
+}
+
+.body  {
+	position:relative
+	font-family: Arial;
+	font-size: 250%;
+	width: 1300px;
+}
+
+.image {
+	position: relative;
+	width: 700px;
+	margin: auto;
+}
+</style>
+<script>
+
+</script>
+
+</HEAD>
+<body style="background-color:#000000; color:#FFFFFF; margin: auto;">
+
+<div id="overview" class="modal">
+  <div class="modal-content">
+  </div>
+</div>
+<script>
+	function showS () {
+		document.getElementById("summary").style.display="block";
+		}
+	function showI () {
+		document.getElementById("instructions").style.display="block";
+		}
+
+	function closeFunc(n) {
+		if (n==1) {int.style.display="none";}
+		if (n==2) {tomen.style.display="none";}
+	}
+
+span.onclick = function() {closeFunc()};
+
+function closeFunc() {
+
+	localStorage.setItem("storedmask", thismask);
+	modal.style.display = "none";
+	document.location.reload(true);
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event){
+    if (event.target == modal) {
+        closeFunc();
+    }
+}
+
+</script>
+
+<p>
+<div class="actionbar"><img src= "actionbar.png">
+<div class="previous"><img id="back" src="ic_action_previous_item.png" onclick="home()"></div><div class="icon"><img src="myst.png"></div><div class="maintitle">General Information</div>
+
+<div id="summary" class="modal">
+<div class="header"><T1>MEGACHILIDAE</T1></div><BR><BR>
+<div class="body"><p>Most species in the family Megachilidae are readily recognised by the scopa of stiff hairs under the abdomen with which the females carry pollen. They also have thick heads and large mandibles.</p></div>
+<div class="image"><img src="megafemale.jpg"></div>
+<div class="body"><p>Males are also readily recognisable. The last visible segment of the upper half of the abdomen (given the shorthand label T6) is bent down to give the end a distinctive rounded shape. Males from other families have abdomens more like those of the females. Many megachilid males have expanded fore tarsi, patterned on the inside, which are presumably placed over the eyes of the female during mating as a recognition signal.</p></div>
+<div class="image"><img src="megamale.jpg"></div>
+<div class="body"><p>There are two types of nesting behaviour. The leaf-cutters construct cocoon-like chambers from pieces of cut from leaves. The structures may be in crevices or in loose soil. </div>
+<div class="image"><img src="leafcutter.jpg"></div>
+<div class="body"><p>Resin bees build their nests in preexisting holes and seal the chambers with a mixture of resin and masticated plant material.</p></div>
+<div class="image"><img src="resinbees.jpg"></div>
+</div>
+
+<div id="instructions" class="modal">
+
+<p style="font-style:'bold'; font-size:250%">USING THE IDENTIFICATION GUIDE</p>
+<div class="body"><p>Clicking on the drawer symbol at the left hand end of the titlebar opens a list of important characters which are grouped in blocks.</p></div>
+<div class="body"><p>Simple identification can be performed by checking the boxes for characters that you recognise, then clicking the "apply" button. Only species with all of the characters you have selected will be displayed. Selecting "end of abdomen orange" and "facial hair orange" will select only the two species that are orange at both ends.</p></div>
+<div class="body"><p>Normally, no more than one character from each block would be chosen. However, there may be situations where you are unsure about a character. If you know the bee has orange hair on the face, but are unsure whether it has 3 or 4 hair bands, you may select "facial hair orange", "3 white tergal bands" and "4 white tergal bands", which will display species with orange facial hair and either 3 or 4 bands.
+</p></div>
+<div class="body"><p>The formal description of this procedure is that characters within blocks are combined using OR logic and characters in different blocks are combined using AND logic.</p></div>
+
+<p  style="font-style:'bold'; font-size:250%">SELECTING ALL SPECIES</p>
+<div class="body"><p>If none of the boxes in any block are selected, the species selected may have any of the characters in the block. The simplest way to reset the choices and show all species is to: (1) Click on the drawer symbol at the left hand end of the titlebar, (2) click on the "reset" button to clear all boxes, (3) click on the "apply" button.</p></div>
+
+<p  style="font-style:'bold'; font-size:250%">LEARNING ABOUT CHARACTERS</p>
+<div class="body"><p>If you are unsure about what any of the characters mean, you can use the same drawer of checkboxes to teach yourself. For example, selecting "3 white tergal bands" will show you all the species with that character. You might then choose "4 white tergal bands" to see the difference, or you could choose both to see the two sets of species together.</p></div>
+</div>
+
+<div id="index" class="modal" style="display:block;">
+<p style="color:#6AAFFD;font-size:250%;" onclick="showS()">(1) Overview of the genus <i>Megachile</i></p>
+<p style="color:#6AAFFD;font-size:250%;" onclick="showI()">(2) Instructions for using the guide</p>
+<BR><BR><BR><BR><p>Click to select option</p></div>
+
+<script>
+	function showS () {
+		document.getElementById("summary").style.display="block";
+		document.getElementById("instructions").style.display="none";
+		document.getElementById("index").style.display="none";
+		document.getElementById("back").onclick= function(){showH()};
+		}
+	function showI () {
+		document.getElementById("summary").style.display="none";
+		document.getElementById("instructions").style.display="block";
+		document.getElementById("index").style.display="none";
+		document.getElementById("back").onclick= function(){showH()};
+		}
+
+	function showH () {
+		document.getElementById("summary").style.display="none";
+		document.getElementById("instructions").style.display="none";
+		document.getElementById("index").style.display="block";
+		document.getElementById("back").onclick= function(){home()};
+		}
+
+	function home() {
+		localStorage.setItem("storedmask", 0);
+		localStorage.setItem("storedmaskm",0);
+		document.location.assign("main.htm");
+	}
+
+	function closeFunc(n) {
+	}
+
+</script></div>
+</BODY></HTML>
+
+
