@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
 <title>Sydney megachilid bees</title>
-<!--[if IE]><link rel="shortcut icon" href="shortcut.ico"><![endif]-->
-<link rel="icon" href="myst.png">
+<!--[if IE]><link rel="shortcut icon" href="images/shortcut.ico"><![endif]-->
+<link rel="icon" href="images/myst.png">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline'">
  
@@ -48,11 +48,11 @@ input[type=checkbox]:checked + .checkbox::after {
 .modal {
     display: none;
     position: absolute;
-    z-index: 1; 
+    z-index: 2; 
     padding-top: 100px; 
     left: 0;
     top: 0;
-    width: 700px; 
+    width: 420px; 
     height: 1100px;
     overflow: auto; 
     background-color: rgba(0,0,0,0); 
@@ -68,6 +68,17 @@ input[type=checkbox]:checked + .checkbox::after {
     border: none;
     width: 400px;
     height: 1050px
+}
+
+.modal-mask {
+    display:none;
+    z-index: 1; 
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height=100%;
+    background-color: rgba(0,0,0,0.5); 
 }
 
 .button {
@@ -88,8 +99,10 @@ input[type=checkbox]:checked + .checkbox::after {
 
 .actionbar {
 	position: relative;
-	margin-left: 0;
-	width: 1300px;
+	text-align: center;
+	width: 100%;
+	height: 80px;
+	background-color:#6AAFFD;
 }
 
 .icon {
@@ -135,10 +148,8 @@ input[type=checkbox]:checked + .checkbox::after {
 .images {
 	display:block;
 	position: relative;
-	width: 1300px;
-	margin-left: 0;
-	margin-right: auto;
-	border: 0;
+	width: 100%;
+	top: 5px;
 }
 
 .caption {
@@ -147,7 +158,7 @@ input[type=checkbox]:checked + .checkbox::after {
 	top: 430px;
 	width: 320px;
 	font-style: italic;
-	text-align: center;
+	align-content: center;
 }
 </style>
 <script type="text/javascript">
@@ -166,17 +177,18 @@ function draw(sm,sx) {
 	var ok=true;
 	var chosen=new Array()
 	var subscript="";
+	var leftmarg = (screen.width - 1275)/2;
 	if (sx=="m") {subscript = "m";
-		     	document.getElementById("sexicon").src="female.png"; }
+		     	document.getElementById("sexicon").src="images/female.png"; }
 	else 	     {subscript = ""
-			document.getElementById("sexicon").src="male.png";};
+			document.getElementById("sexicon").src="images/male.png";};
 	document.write ("<div class='images'>");
 	var m1=sm & 15;
 	var m2=sm & 496;
 	var m3=sm & 1536;
 	var m4=sm & 2048;
 	var m5=sm & 28672;
-	document.write("<div class='images'>");
+	document.write("<div class='images' style='left:"+leftmarg+"px;'>");
 	for (var i=1;i<28;i++){
 		ok=true;
 		if ((m1!=0)&&((m1&mask[i])==0)) {ok=false};
@@ -184,23 +196,23 @@ function draw(sm,sx) {
 		if (ok&&(m3!=0)&&((m3&mask[i])==0)) {ok=false};
 		if (ok&&(m4!=0)&&((m4&mask[i])==0)) {ok=false};
 		if (ok&&(m5!=0)&&((m5&mask[i])==0)) {ok=false};
-		if (ok) {filename[i] = ""+sp[i]+ subscript +".jpg";
+		if (ok) {filename[i] = "images/"+sp[i]+ subscript +".jpg";
 			document.write ("<img src='"+filename[i]+"' onclick='jumpto("+ i +")'> &nbsp;");
 			count = count + 1;
 			chosen[count]=i;
 			} 
 			if (count==4||i==27) {
-						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='left:"+(j-1)*322+"px;'>"+n[chosen[j]]+"</span>");}
+						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='left:"+(100+(j-1)*322)+"px;'>"+n[chosen[j]]+"</span>");}
 						count = 0;
 						document.write("</div><BR><BR>");
-						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images'>")};
+						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images' style='left:"+leftmarg+"px;'>")};
 						}
 	}
 	document.write ("</div>");
 }
 
 </script>
-<script type="text/javascript" src="listen.js"></script>
+<script type="text/javascript" src="js/listen.js"></script>
 </HEAD>
 <body style="background-color:#000000; color:#FFFFFF; margin: auto;">
 <script type="text/javascript">
@@ -210,9 +222,9 @@ var sp = new Array()
 var mask = new Array()
 var sex = new String
 </script>
-<script type="text/javascript"  SRC="names.js"></script>
-<script type="text/javascript"  SRC="species.js"></script>
-<script type="text/javascript"  SRC="masks.js"></script>
+<script type="text/javascript"  SRC="js/names.js"></script>
+<script type="text/javascript"  SRC="js/species.js"></script>
+<script type="text/javascript"  SRC="js/masks.js"></script>
 <script type="text/javascript">
 !localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
 
@@ -267,9 +279,13 @@ if(typeof(Storage) !== "undefined") {
   </div>
 </div>
 
+<div id="modalOverlay" class="modal-mask">
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+</div>
+
 <p>
-<div class="actionbar"><img src= "actionbar.png">
-<div class="drawer"><img id="drawer" src="ic_drawer.png" ></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="male.png"></div><div class="help"><img id="help" src="ic_action_help.png"></div></div>
+<div class="actionbar">
+<div class="drawer"><img id="drawer" src="images/ic_drawer.png" ></div><div class="icon"><img src="images/myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="images/male.png"></div><div class="help"><img id="help" src="images/ic_action_help.png"></div></div>
 <script type="text/javascript">
 draw(searchmask,sex);
 </script>
