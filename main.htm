@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
 <title>Sydney megachilid bees</title>
-<!--[if IE]><link rel="shortcut icon" href="shortcut.ico"><![endif]-->
-<link rel="icon" href="myst.png">
+<!--[if IE]><link rel="shortcut icon" href="images/shortcut.ico"><![endif]-->
+<link rel="icon" href="images/myst.png">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline'">
  
@@ -127,29 +127,87 @@ input[type=checkbox]:checked + .checkbox::after {
 	margin-left: 65%;
 }
 
+.flares {
+	position: absolute;
+	top: 0;
+	transition: .5s ease;
+	opacity: 0;
+}
+
+.sex:hover .sex {
+	opacity: 0.5;
+}	
+
+.sex:hover .flares {
+	opacity: 0.5;
+}	
+
 .help {
 	position: absolute;
 	top: 15px;
 	margin-left: 90%;
 }
 
-.drawer {
+.flareh {
 	position: absolute;
-	top: 25px;
-	margin-left: 2%;
+	top: 0;
+	transition: .5s ease;
+	opacity: 0;
 }
 
+.help:hover .help {
+	opacity: 0.5;
+}
+
+.help:hover .flareh {
+	opacity: 0.5;
+}	
+
+.drawer {
+	position: absolute;
+	width: 48px;
+	top: 15px;
+	display: block;
+	opacity: 1;
+	margin-left: 1%;
+}
+
+.flare {
+	position: absolute;
+	top: 0;
+	transition: .5s ease;
+	opacity: 0;
+}
+
+.drawer:hover .drawer {
+	opacity: 0.5;
+}	
+
+.drawer:hover .flare {
+	opacity: 0.5;
+}	
+
 .container {
-	width: 1300px;
-	display:block;
+ 	position: relative;
+	width: 1430px;
+	margin: auto;
+	display: block;
+	overflow: scroll;
 	background-color: black;
+	border: 4px solid gray;
+}
+
+.scrollitem {
+	position: relative;
+	margin:inherit;
+	width: 1300px;
+	height: 3000px;
 }
 
 .images {
 	display:block;
 	position: relative;
-	width: 100%;
-	top: 5px;
+	margin: inherit;
 }
 
 .caption {
@@ -162,6 +220,14 @@ input[type=checkbox]:checked + .checkbox::after {
 }
 </style>
 <script type="text/javascript">
+
+function dim(x) {
+	x.style.opacity=0.8;
+}
+
+function undim(x) {
+	x.style.opacity=1;
+}
 
 function jumpto(x) {
 	document.location.assign(sp[x]+".htm");
@@ -177,18 +243,18 @@ function draw(sm,sx) {
 	var ok=true;
 	var chosen=new Array()
 	var subscript="";
-	var leftmarg = (screen.width - 1275)/2;
+	var sh = screen.height-225;
 	if (sx=="m") {subscript = "m";
-		     	document.getElementById("sexicon").src="female.png"; }
+		     	document.getElementById("sexicon").src="images/female.png"; }
 	else 	     {subscript = ""
-			document.getElementById("sexicon").src="male.png";};
+			document.getElementById("sexicon").src="images/male.png";};
 	document.write ("<div class='images'>");
 	var m1=sm & 15;
 	var m2=sm & 496;
 	var m3=sm & 1536;
 	var m4=sm & 2048;
 	var m5=sm & 28672;
-	document.write("<div class='images' style='left:"+leftmarg+"px;'>");
+	document.write("<div class='container' style = 'height: " + sh + "px'><div class='scrollitem'><div class='images'>");
 	for (var i=1;i<28;i++){
 		ok=true;
 		if ((m1!=0)&&((m1&mask[i])==0)) {ok=false};
@@ -196,8 +262,8 @@ function draw(sm,sx) {
 		if (ok&&(m3!=0)&&((m3&mask[i])==0)) {ok=false};
 		if (ok&&(m4!=0)&&((m4&mask[i])==0)) {ok=false};
 		if (ok&&(m5!=0)&&((m5&mask[i])==0)) {ok=false};
-		if (ok) {filename[i] = ""+sp[i]+ subscript +".jpg";
-			document.write ("<img src='"+filename[i]+"' onclick='jumpto("+ i +")'> &nbsp;");
+		if (ok) {filename[i] = "images/"+sp[i]+ subscript +".jpg";
+			document.write ("<img src='"+filename[i]+"' onmouseover='dim(this)' onmouseout='undim(this)'  onclick='jumpto("+ i +")'> &nbsp;");
 			count = count + 1;
 			chosen[count]=i;
 			} 
@@ -205,14 +271,14 @@ function draw(sm,sx) {
 						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='left:"+(100+(j-1)*322)+"px;'>"+n[chosen[j]]+"</span>");}
 						count = 0;
 						document.write("</div><BR><BR>");
-						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images' style='left:"+leftmarg+"px;'>")};
+						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images'>")};
 						}
 	}
-	document.write ("</div>");
+	document.write ("</div></div>");
 }
 
 </script>
-<script type="text/javascript" src="listen.js"></script>
+<script type="text/javascript" src="js/listen.js"></script>
 </HEAD>
 <body style="background-color:#000000; color:#FFFFFF; margin: auto;">
 <script type="text/javascript">
@@ -222,9 +288,9 @@ var sp = new Array()
 var mask = new Array()
 var sex = new String
 </script>
-<script type="text/javascript"  SRC="names.js"></script>
-<script type="text/javascript"  SRC="species.js"></script>
-<script type="text/javascript"  SRC="masks.js"></script>
+<script type="text/javascript"  SRC="js/names.js"></script>
+<script type="text/javascript"  SRC="js/species.js"></script>
+<script type="text/javascript"  SRC="js/masks.js"></script>
 <script type="text/javascript">
 !localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
 
@@ -285,7 +351,7 @@ if(typeof(Storage) !== "undefined") {
 
 <p>
 <div class="actionbar">
-<div class="drawer"><img id="drawer" src="ic_drawer.png" ></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="male.png"></div><div class="help"><img id="help" src="ic_action_help.png"></div></div>
+<div class="drawer"><img id="drawer" src="images/ic_drawer.png" ><div class="flare"><img id="flare" src="images/flare.png"></div></div><div class="icon"><img src="images/myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="images/male.png"><div class="flares"><img id="flares" src="images/flare.png"></div></div><div class="help"><img id="help" src="images/ic_action_help.png"><div class="flareh"><img id="flareh" src="images/flare.png"></div></div></div>
 <script type="text/javascript">
 draw(searchmask,sex);
 </script>
