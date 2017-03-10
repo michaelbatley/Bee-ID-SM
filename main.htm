@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
 <title>Sydney megachilid bees</title>
-<!--[if IE]><link rel="shortcut icon" href="images/shortcut.ico"><![endif]-->
-<link rel="icon" href="images/myst.png">
+<!--[if IE]><link rel="shortcut icon" href="shortcut.ico"><![endif]-->
+<link rel="icon" href="myst.png">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; script-src 'self' 'unsafe-inline'">
  
@@ -245,9 +245,9 @@ function draw(sm,sx) {
 	var subscript="";
 	var sh = screen.height-225;
 	if (sx=="m") {subscript = "m";
-		     	document.getElementById("sexicon").src="images/female.png"; }
+		     	document.getElementById("sexicon").src="female.png"; }
 	else 	     {subscript = ""
-			document.getElementById("sexicon").src="images/male.png";};
+			document.getElementById("sexicon").src="male.png";};
 	document.write ("<div class='images'>");
 	var m1=sm & 15;
 	var m2=sm & 496;
@@ -262,7 +262,7 @@ function draw(sm,sx) {
 		if (ok&&(m3!=0)&&((m3&mask[i])==0)) {ok=false};
 		if (ok&&(m4!=0)&&((m4&mask[i])==0)) {ok=false};
 		if (ok&&(m5!=0)&&((m5&mask[i])==0)) {ok=false};
-		if (ok) {filename[i] = "images/"+sp[i]+ subscript +".jpg";
+		if (ok) {filename[i] = ""+sp[i]+ subscript +".jpg";
 			document.write ("<img src='"+filename[i]+"' onmouseover='dim(this)' onmouseout='undim(this)'  onclick='jumpto("+ i +")'> &nbsp;");
 			count = count + 1;
 			chosen[count]=i;
@@ -278,7 +278,7 @@ function draw(sm,sx) {
 }
 
 </script>
-<script type="text/javascript" src="js/listen.js"></script>
+<script type="text/javascript" src="listen.js"></script>
 </HEAD>
 <body style="background-color:#000000; color:#FFFFFF; margin: auto;">
 <script type="text/javascript">
@@ -288,9 +288,9 @@ var sp = new Array()
 var mask = new Array()
 var sex = new String
 </script>
-<script type="text/javascript"  SRC="js/names.js"></script>
-<script type="text/javascript"  SRC="js/species.js"></script>
-<script type="text/javascript"  SRC="js/masks.js"></script>
+<script type="text/javascript"  SRC="names.js"></script>
+<script type="text/javascript"  SRC="species.js"></script>
+<script type="text/javascript"  SRC="masks.js"></script>
 <script type="text/javascript">
 !localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
 
@@ -351,7 +351,7 @@ if(typeof(Storage) !== "undefined") {
 
 <p>
 <div class="actionbar">
-<div class="drawer"><img id="drawer" src="images/ic_drawer.png" ><div class="flare"><img id="flare" src="images/flare.png"></div></div><div class="icon"><img src="images/myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="images/male.png"><div class="flares"><img id="flares" src="images/flare.png"></div></div><div class="help"><img id="help" src="images/ic_action_help.png"><div class="flareh"><img id="flareh" src="images/flare.png"></div></div></div>
+<div class="drawer"><img id="drawer" src="ic_drawer.png" ><div class="flare"><img id="flare" src="flare.png"></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="male.png"><div class="flares"><img id="flares" src="flare.png"></div></div><div class="help"><img id="help" src="ic_action_help.png"><div class="flareh"><img id="flareh" src="flare.png"></div></div></div>
 <script type="text/javascript">
 draw(searchmask,sex);
 </script>
