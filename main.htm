@@ -127,16 +127,17 @@ input[type=checkbox]:checked + .checkbox::after {
 	margin-left: 65%;
 }
 
+.sicon {
+	position: absolute;
+	opacity: 1;
+}
+
 .flares {
 	position: absolute;
 	top: 0;
 	transition: .5s ease;
 	opacity: 0;
 }
-
-.sex:hover .sex {
-	opacity: 0.5;
-}	
 
 .sex:hover .flares {
 	opacity: 0.5;
@@ -148,15 +149,16 @@ input[type=checkbox]:checked + .checkbox::after {
 	margin-left: 90%;
 }
 
+.hicon {
+	position: absolute;
+	opacity: 1;
+}
+
 .flareh {
 	position: absolute;
 	top: 0;
 	transition: .5s ease;
 	opacity: 0;
-}
-
-.help:hover .help {
-	opacity: 0.5;
 }
 
 .help:hover .flareh {
@@ -168,8 +170,12 @@ input[type=checkbox]:checked + .checkbox::after {
 	width: 48px;
 	top: 15px;
 	display: block;
-	opacity: 1;
 	margin-left: 1%;
+}
+
+.dicon {
+	position: absolute;
+	opacity: 1;
 }
 
 .flare {
@@ -178,10 +184,6 @@ input[type=checkbox]:checked + .checkbox::after {
 	transition: .5s ease;
 	opacity: 0;
 }
-
-.drawer:hover .drawer {
-	opacity: 0.5;
-}	
 
 .drawer:hover .flare {
 	opacity: 0.5;
@@ -351,7 +353,7 @@ if(typeof(Storage) !== "undefined") {
 
 <p>
 <div class="actionbar">
-<div class="drawer"><img id="drawer" src="ic_drawer.png" ><div class="flare"><img id="flare" src="flare.png"></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><img id="sexicon" src="male.png"><div class="flares"><img id="flares" src="flare.png"></div></div><div class="help"><img id="help" src="ic_action_help.png"><div class="flareh"><img id="flareh" src="flare.png"></div></div></div>
+<div class="drawer"><div class="flare"><img src="flare.png"></div><div class="dicon"><img id="drawer" src="ic_drawer.png" ></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><div class="flares"><img src="flare.png"></div><div class="sicon"><img id="sexicon" src="male.png"></div></div><div class="help"><div class="flareh"><img src="flare.png"></div> <div class="hicon"><img id="help"  src="ic_action_help.png"></div></div></div>
 <script type="text/javascript">
 draw(searchmask,sex);
 </script>

@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("flare").addEventListener("click", openFunc);
+  document.getElementById("drawer").addEventListener("click", openFunc);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("flares").addEventListener("click", sexChange);
+  document.getElementById("sexicon").addEventListener("click", sexChange);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("flareh").addEventListener("click", openhelp);
+  document.getElementById("help").addEventListener("click", openhelp);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
