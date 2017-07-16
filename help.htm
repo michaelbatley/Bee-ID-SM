@@ -95,11 +95,11 @@
 }
 </style>
 <script>
-
+function textsize(){if (screen.width>1024){document.getElementById("summary").style.fontSize="67%";document.getElementById("instructions").style.fontSize="67%"}}
 </script>
 
 </HEAD>
-<body style="background-color:#000000; color:#FFFFFF; margin: auto;">
+<body style="background-color:#000000; color:#FFFFFF; margin: auto;" onload="textsize()">
 
 <div id="overview" class="modal">
   <div class="modal-content">
@@ -173,7 +173,6 @@ window.onclick = function(event){
 <p style="color:#6AAFFD;font-size:250%;" onclick="showI()">(2) Instructions for using the guide</p>
 <p>Click to select option</p>
 <BR><BR><BR><BR><BR><BR><BR><BR><p style="font-size:150%;">Suggestions for improvement or requests for help may be sent to michael.batley@yahoo.com.au</p></div>
-	
 <script>
 	function showS () {
 		document.getElementById("summary").style.display="block";
