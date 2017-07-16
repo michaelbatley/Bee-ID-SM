@@ -63,7 +63,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	font-family: Helvetica;
-	font-size: 250%;
 	font-weight: normal;
 }
 </style>
@@ -74,9 +73,12 @@ function switchpage() {
 function home() {
 	document.location.assign("main.htm")
 }
+function textsize() {
+	if (screen.width>1024) {document.getElementById("para").style.fontSize="180%"} else {document.getElementById("para").style.fontSize="240%"};
+}
 </script>
 </HEAD>
-<body text="#FFFFFF" link="#409000" bgcolor="#00000">
+<body text="#FFFFFF" link="#409000" bgcolor="#00000" onload="textsize()">
 <P>
 
 <div class="actionbar"><img src="actionbar.png">
@@ -84,7 +86,7 @@ function home() {
 <p><div class="buttons"><span class="details" onclick="switchpage()">DETAILS</span>
 <span class="distrib">DISTRIBUTION</span>
 </div></p>
-	<BR><div class="paragraph"><p><span style="font-weight:bold;">Distribution</span><BR>
+	<BR><div class="paragraph" id="para"><p><span style="font-weight:bold;">Distribution</span><BR>
 	<BR>Coastal northern NSW and southern Queensland.</p>
 	<p><span style="font-weight:bold;">Observation records</span><span style="font-style:italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Megachile ustulata</span></div>
 
