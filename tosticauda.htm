@@ -52,7 +52,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	font-family: Helvetica;
-	font-size: 180%;
 	font-weight: normal;
 }
 
@@ -97,10 +96,13 @@ function switchpage() {
 function home() {
 	document.location.assign("main.htm")
 }
+function textsize() {
+	if (screen.width>1024) {document.getElementById("para").style.fontSize="120%"} else {document.getElementById("para").style.fontSize="180%"};
+}
 </script>
 
 </HEAD>
-<body text="#FFFFFF" link="#409000" bgcolor="#00000">
+<body text="#FFFFFF" link="#409000" bgcolor="#00000" onload="textsize()">
 
 <P>
 <div class="actionbar"><img src = "actionbar.png">
@@ -121,7 +123,7 @@ var sp = new Array()
 	}
 	document.write("</div></div>")
 </script>
-	<div class="paragraph">
+	<div class="paragraph" id="para">
 	<p style = "color:yellow; font-size:150%; font-style:italic; font-weight:bold;">Megachile (Hackeriapis) tosticauda</p>
 	<p style="font-size:120%;">&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<span style="font-weight:bold; ">Size</span>
