@@ -109,15 +109,15 @@ input[type=checkbox]:checked + .checkbox::after {
 	position: absolute;
 	width: 64px;
 	top: 7px;
-	margin-left: 70px;
+	margin-left: 10%;
 }
 
 .maintitle {
 	position: absolute;
 	top: 15px;
 	font-family: Arial;
-	font-size: 250%;
-	margin-left: 15%;
+	font-size: 100%;
+	margin-left: 25%;
 	background-color:#6AAFFD;
 }
 
@@ -218,19 +218,19 @@ function jumpto(x) {
 	document.location.assign(sp[x]+".htm");
 }
 
-function openhelp() {
-	document.location.assign("help.htm");
-}
-
+function scale() {
+	document.getElementById("mtitle").style.fontSize=txtsc*100+"%";
+	document.getElementById("mtitle").style.top=(35-txtsc*10)+"px";}
 
 function draw(sm,sx) {
 	var count=0;
 	var ok=true;
 	var chosen=new Array()
-	var subscript="";
 	var sh = screen.height-250;
 	var sw = screen.width;
 	if (sw>1024) {sc = 0.75} else {sc=0.95}; 
+	txtsc = sw/600;
+	var subscript="";
 	if (sx=="m") {subscript = "m";
 		     	document.getElementById("sexicon").src="female.png"; }
 	else 	     {subscript = ""
@@ -256,7 +256,7 @@ function draw(sm,sx) {
 			} 
 			if (count==4||i==27) {
 						document.write("<BR>");
-						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='font-size:"+sc*150+"%px'>"+n[chosen[j]]+"</span>");}
+						for (var j=1; j<(count+1); j++) {document.write ("<span class='caption' style='font-size:75%'>"+n[chosen[j]]+"</span>");}
 						count = 0;
 						document.write("</div><BR><BR>");
 						if (i>24) {document.write("<BR><BR>")} else {document.write("<div class='images'>")};
@@ -264,11 +264,9 @@ function draw(sm,sx) {
 	}
 	document.write ("</div></div>");
 }
-
 </script>
-<script type="text/javascript" src="listen.js"></script>
 </HEAD>
-<body style="background-color:#000000; color:#FFFFFF; margin: auto;">
+<body style="background-color:#000000; color:#FFFFFF; margin: auto;" onload="scale()">
 <script type="text/javascript">
 var n =new Array()
 var filename = new Array()
@@ -276,6 +274,7 @@ var sp = new Array()
 var mask = new Array()
 var sex = new String
 </script>
+<script type="text/javascript" src="listen.js"></script>
 <script type="text/javascript"  SRC="names.js"></script>
 <script type="text/javascript"  SRC="species.js"></script>
 <script type="text/javascript"  SRC="masks.js"></script>
@@ -339,7 +338,7 @@ if(typeof(Storage) !== "undefined") {
 
 <p>
 <div class="actionbar">
-<div class="drawer"><div class="flare"><img src="flare.png"></div><div class="dicon"><img id="drawer" src="ic_drawer.png" ></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle">Sydney megachilid bees</div><div class="sex"><div class="flare"><img src="flare.png"></div><div class="sicon"><img id="sexicon" src="male.png"></div></div><div class="help"><div class="flare"><img src="flare.png"></div> <div class="hicon"><img id="help"  src="ic_action_help.png"></div></div></div>
+<div class="drawer"><div class="flare"><img src="flare.png"></div><div class="dicon"><img id="drawer" src="ic_drawer.png" ></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle" id="mtitle">Sydney megachilid bees</div><div class="sex"><div class="flare"><img src="flare.png"></div><div class="sicon"><img id="sexicon" src="male.png"></div></div><div class="help"><div class="flare"><img src="flare.png"></div> <div class="hicon"><img id="help"  src="ic_action_help.png"></div></div></div>
 <script type="text/javascript">
 draw(searchmask,sex);
 </script>
