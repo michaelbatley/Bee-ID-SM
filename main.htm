@@ -81,6 +81,16 @@ input[type=checkbox]:checked + .checkbox::after {
     background-color: rgba(0,0,0,0.5); 
 }
 
+.allbutton {
+    position: relative;
+    margin-left: 50px;
+    background-color: #303030;
+    width: 150px;
+    font-size: 100%;
+    padding:5px 0px 5px 0px;
+    border: none;
+}
+
 .button {
     position: relative;
     margin-left: 120px;
@@ -203,6 +213,7 @@ input[type=checkbox]:checked + .checkbox::after {
 	font-style: italic;
 	text-align:center;
 }
+.thumb {}
 </style>
 <script type="text/javascript">
 
@@ -220,37 +231,78 @@ function jumpto(x) {
 
 function scale() {
 	document.getElementById("mtitle").style.fontSize=txtsc*100+"%";
-	document.getElementById("mtitle").style.top=(35-txtsc*10)+"px";}
+	document.getElementById("mtitle").style.top=(35-txtsc*10)+"px";
+	document.getElementById("myModal").style.display = "none";
+}
+
+function populateDrawer(){
+	colcount = 1;
+	document.write("<div style='background-color:#000000'>");
+    if (sex =="f"){
+      for (var j=1; j<16;j++){document.write("<p><input type='checkbox' id='par"+j+"'><label for='par"+j+"' class='checkbox'>"+ch[j]+"</label></p>");
+      	  	       if (chcol[colcount]==j){
+      				       if (colcount%2){
+					            document.write("</div><div style='background-color:#303030'>");
+					            } else {
+					            document.write("</div><div style='background-color:#000000'>")
+				     	            }
+				     colcount++;
+      				     }
+      		 }
+     } else {
+        for (var j=1; j<16;j++){document.write("<p><input type='checkbox' id='par"+j+"'><label for='par"+j+"' class='checkbox'>"+mch[j]+"</label></p>");
+      		       if (mchcol[colcount]==j){
+      				         if (colcount%2){
+					               document.write("</div><div style='background-color:#303030'>");
+					               } else {
+					               document.write("</div><div style='background-color:#000000'>")
+					               }
+				         colcount++;
+      				         }
+      		}
+     }
+     document.write("</div>");
+  }
 
 function draw(sm,sx) {
 	var count=0;
 	var ok=true;
 	var chosen=new Array()
+	var subscript="";
 	var sh = screen.height-250;
+	var m = new Array();
+	var localmask = new Array();
 	var sw = screen.width;
 	if (sw>1024) {sc = 0.75} else {sc=0.95}; 
 	txtsc = sw/600;
-	var subscript="";
 	if (sx=="m") {subscript = "m";
-		     	document.getElementById("sexicon").src="female.png"; }
-	else 	     {subscript = ""
-			document.getElementById("sexicon").src="male.png";};
-	document.write ("<div class='images'>");
-	var m1=sm & 15;
-	var m2=sm & 496;
-	var m3=sm & 1536;
-	var m4=sm & 2048;
-	var m5=sm & 28672;
+		  document.getElementById("sexicon").src="female.png";
+		  document.getElementById("mf").innerHTML="males";
+		  for (var i=1; i<mchcol.length;i++)	{
+    					m[i]=sm & (Math.pow(2,mchcol[i])-Math.pow(2,mchcol[i-1]));
+					}
+		  for (var i=1; i<28;i++)		{
+					localmask[i] = mmask[i];
+					}
+		}
+	else    	{subscript = "";
+		 document.getElementById("sexicon").src="male.png";
+		 document.getElementById("mf").innerHTML="females";
+		 for (var i=1; i<chcol.length;i++)	{
+    					m[i]=sm & (Math.pow(2,chcol[i])-Math.pow(2,chcol[i-1]));
+					}
+		  for (var i=1; i<28;i++)		{
+					localmask[i] = mask[i];
+					}
+
+		}
 	document.write("<div class='container' style = 'height: " + sh + "px; width:"+ sc*sw+"px'><div class='scrollitem'><div class='images'>");
 	for (var i=1;i<28;i++){
 		ok=true;
-		if ((m1!=0)&&((m1&mask[i])==0)) {ok=false};
-		if (ok&&(m2!=0)&&((m2&mask[i])==0)) {ok=false};
-		if (ok&&(m3!=0)&&((m3&mask[i])==0)) {ok=false};
-		if (ok&&(m4!=0)&&((m4&mask[i])==0)) {ok=false};
-		if (ok&&(m5!=0)&&((m5&mask[i])==0)) {ok=false};
+		for (var j=1;j<m.length;j++){
+		if ((m[j]!=0)&&((m[j]&localmask[i])==0)) {ok=false};};
 		if (ok) {filename[i] = ""+sp[i]+ subscript +".jpg";
-			document.write ("<img src='"+filename[i]+"' onmouseover='dim(this)' onmouseout='undim(this)'  onclick='jumpto("+ i +")' style='width:24%'>&nbsp;");
+			document.write ("<img class='thumb' src='"+filename[i]+"' onmouseover='dim(this)' onmouseout='undim(this)'  onclick='jumpto("+ i +")' style='width:24%'>&nbsp;");
 			count = count + 1;
 			chosen[count]=i;
 			} 
@@ -264,83 +316,69 @@ function draw(sm,sx) {
 	}
 	document.write ("</div></div>");
 }
-</script>
-</HEAD>
-<body style="background-color:#000000; color:#FFFFFF; margin: auto;" onload="scale()">
-<script type="text/javascript">
+
 var n =new Array()
 var filename = new Array()
 var sp = new Array()
 var mask = new Array()
 var sex = new String
+var mmask = new Array()
+var ch = new Array()
+var chcol = new Array()
+var mch = new Array()
+var mchcol = new Array()
+var sex = new String
+
+if(typeof(Storage) !== "undefined") {
+	searchmask = sessionStorage.getItem("storedmask");
+	searchmaskm = sessionStorage.getItem("storedmaskm");
+	if (sessionStorage.getItem("storedsex") == null) {sessionStorage.setItem("storedsex","f")};
+	sex = sessionStorage.getItem("storedsex");
+} else {
+    alert("Sorry, your browser does not support data storage");
+};
+
 </script>
 <script type="text/javascript" src="listen.js"></script>
 <script type="text/javascript"  SRC="names.js"></script>
 <script type="text/javascript"  SRC="species.js"></script>
 <script type="text/javascript"  SRC="masks.js"></script>
-<script type="text/javascript">
-!localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
-
-if(typeof(Storage) !== "undefined") {
-	var searchmask = localStorage.getItem("storedmask");
-	if (localStorage.getItem("storedsex") == null) {localStorage.setItem("storedsex","f")};
-	sex = localStorage.getItem("storedsex");
-} else {
-    alert("Sorry, your browser does not support data storage");
-};
-</script>
+<script type="text/javascript"  SRC="malemasks.js"></script>
+<script type="text/javascript"  SRC="chars.js"></script>
+<script type="text/javascript"  SRC="malechars.js"></script>
+</HEAD>
+<body style="background-color:#000000; color:#FFFFFF; margin: auto;" onload="scale()">
 
 <div id="myModal" class="modal">
   <div class="modal-content">
 	<button id="clear" class="button" style="color:#6AAFFD;"><b>clear all</b></button>
-	<div style="background-color: #202020; padding-left:20px;">
-	<p><input type="checkbox" id="par1">
-	<label for="par1" class="checkbox">abdomen mostly orange</label></p>
-	<p><input type="checkbox" id="par2">
-	<label for="par2" class="checkbox">end of abdomen orange</label></p>
-	<p><input type="checkbox" id="par3" style="float:right;">
-	<label for="par3" class="checkbox">end of abdomen white</label></p>
-	<p><input type="checkbox" id="par4" style="float:right;">
-	<label for="par4" class="checkbox">end of abdomen black</label></p>
-	</div><div style="background-color: #000000; padding-left:20px">
-	<p><input type="checkbox" id="par5" style="float:right;">
-	<label for="par5" class="checkbox">5 white tergal bands</label></p>
-	<p><input type="checkbox" id="par6" style="float:right;">
-	<label for="par6" class="checkbox">4 white tergal bands</label></p>
-	<p><input type="checkbox" id="par7" style="float:right;">
-	<label for="par7" class="checkbox">3 white tergal bands</label></p>
-	<p><input type="checkbox" id="par8" style="float:right;">
-	<label for="par8" class="checkbox">2 white tergal bands</label></p>
-	<p><input type="checkbox" id="par9" style="float:right;">
-	<label for="par9" class="checkbox">lateral tergal hair only</label></p>
-	</div><div style="background-color: #202020; padding-left:20px">
-	<p><input type="checkbox" id="par10" style="float:right;">
-	<label for="par10" class="checkbox">facial hair white</label></p>
-	<p><input type="checkbox" id="par11" style="float:right;">
-	<label for="par11" class="checkbox">facial hair orange</label></p>
-	</div><div style="background-color: #000000; padding-left:20px">
-	<p><input type="checkbox" id="par12" style="float:right;">
-	<label for="par12" class="checkbox">clypeus with projection(s)</label></p>
-	</div><div style="background-color: #202020; padding-left:20px">
-	<p><input type="checkbox" id="par13" style="float:right;">
-	<label for="par13" class="checkbox">length <10 mm </label></p>
-	<p><input type="checkbox" id="par14" style="float:right;">
-	<label for="par14" class="checkbox">length 10-12 mm</label></p>
-	<p><input type="checkbox" id="par15" style="float:right;">
-	<label for="par15" class="checkbox">length > 12 mm</label></p></div>
-	<button id="apply" class="button" style="color:#FFFFFF;"><b>apply</b></button>
+<script type="text/javascript">
+populateDrawer();
+</script>
+    <button id="apply" class="button" style="color:#FFFFFF;"><b>apply</b></button>
   </div>
 </div>
 
 <div id="modalOverlay" class="modal-mask">
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 </div>
+<script type="text/javascript">
+var modal = document.getElementById('myModal');
+var modMask = document.getElementById('modalOverlay');
+var submit = document.getElementsByClassName("button")[1];
+var clear = document.getElementsByClassName("button")[0];
+</script>
 
 <p>
 <div class="actionbar">
-<div class="drawer"><div class="flare"><img src="flare.png"></div><div class="dicon"><img id="drawer" src="ic_drawer.png" ></div></div><div class="icon"><img src="myst.png"></div><div class="maintitle" id="mtitle">Sydney megachilid bees</div><div class="sex"><div class="flare"><img src="flare.png"></div><div class="sicon"><img id="sexicon" src="male.png"></div></div><div class="help"><div class="flare"><img src="flare.png"></div> <div class="hicon"><img id="help"  src="ic_action_help.png"></div></div></div>
+<div class="drawer"><div class="flare"><img src="flare.png"></div><div class="dicon"><img id="drawer" src="ic_drawer.png" ></div></div>
+<div class="icon"><img src="myst.png"></div><div class="maintitle" id="mtitle">Sydney megachilid <span id="mf"></span></div>
+<div class="sex"><div class="flare"><img src="flare.png"></div><div class="sicon"><img id="sexicon" src="male.png"></div></div>
+<div class="help"><div class="flare"><img src="flare.png"></div> <div class="hicon"><img id="help"  src="ic_action_help.png"></div></div>
+</div>
+
 <script type="text/javascript">
-draw(searchmask,sex);
+if (sex=="f") {draw(searchmask,sex);} else {draw(searchmaskm,sex)};
 </script>
 </BODY>
 </HTML>
